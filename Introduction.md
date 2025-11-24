@@ -9,3 +9,8 @@
 <div align="center">
 <img src="https://github.com/user-attachments/assets/45d26f9a-b53e-4593-85fa-8dfe6181acd9">
 </div>
+
+3. Kubernets는 Kubernetes Cluster를 운영하는 운영자와 기능들을 활용해 자신의 서비스를 배포하는 사용자로 구분
+<div align="center">
+<img src="https://github.com/user-attachments/assets/49ff2186-e64c-4d15-bfdb-c613d5cd6873">
+</div>
