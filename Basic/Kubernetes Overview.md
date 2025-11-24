@@ -5,7 +5,7 @@
 <img width="1566" height="753" alt="image" src="https://github.com/user-attachments/assets/c36ac535-2af4-49fc-a5a8-6a2a050a0e85" />
 
 1. 서버 한 대는 Master, 다른 서버는 Node라고 해서 한 마스터에 여러 노드들이 연결
-   - 연결이 되면 하나의 Kubernetest 클러스터라는 개념으로 묶
+   - 연결이 되면 하나의 Kubernetest 클러스터라는 개념으로 묶임
    - Master : Kubernetes의 전반적 기능들을 컨트롤하는 역할
    - Node : 자원을 제공하는 역할
 
