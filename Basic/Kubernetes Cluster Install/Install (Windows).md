@@ -15,7 +15,7 @@
 
 3. XShell 설치
    - 다운로드 URL : ```https://www.netsarang.com/en/free-for-home-school/```
-   - 설치 후 k8s-master(192.168.56.30:22), k8s-worker1(192.168.56.31:22), k8s-worker2(192.168.56.32:22) IP 등록
+   - 설치 후 (세션 - 세션 만들기) k8s-master(192.168.56.30:22), k8s-worker1(192.168.56.31:22), k8s-worker2(192.168.56.32:22) IP 등록
 
 4. Virtualbox 설치 (7.1.6 버전) ​
   - Download : ```https://download.virtualbox.org/virtualbox/7.1.6/VirtualBox-7.1.6-167084-Win.exe```
