@@ -23,7 +23,7 @@
    - Pod 뿐만 아니라 모든 Object에 부착할 수 있는데, Pod에서 가장 많이 사용
    - 사용 이유 : 목적에 따라 Object들을 분류하고, 분류된 Object들만 선택하여 연결하기 위함
    - 구성 : Key와 Value가 한 쌍이며, 한 Pod에는 여러 개의 Label을 붙일 수 있음
-   - 이렇게 사용 목적에 따라 Label을 잘 붙여 놓으면, 원하는 Pdo를 선택해서 사용 가능
+   - 이렇게 사용 목적에 따라 Label을 잘 붙여 놓으면, 원하는 Pod를 선택해서 사용 가능
    - Label Yaml 파일
      + Pod를 만들 때 , labels에 Key-Value 형식으로 내용을 넣을 수 있음
      + 추후 서비스를 만들 때, selector에 Key와 Value를 넣으면 해당 내용과 매칭되는 Label이 붙어 있는 Pod로 연결
