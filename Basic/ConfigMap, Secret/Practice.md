@@ -40,7 +40,9 @@ data:
   Key: MTIzNA== # base64 인코딩 형태의 문자 입력
 ```
   - sec-dev
-<img width="185" height="252" alt="image" src="https://github.com/user-attachments/assets/8c20aa9e-cf16-4e74-9e87-505dc9730bc8" />
+<div align="center">
+<img src="https://github.com/user-attachments/assets/8c20aa9e-cf16-4e74-9e87-505dc9730bc8">
+</div>
 
   - Pod
 ```yaml
@@ -89,8 +91,13 @@ echo "Content" >> file-s.txt
 kubectl create secret generic sec-file --from-file=./file-s.txt
 ```
    - 명령어로 Secret를 생성할 때는 내용을 자동으로 Base64 해주기 때문에, 별도로 "Content"를 Base64 해줄 필요 없음 
-<img width="298" height="260" alt="image" src="https://github.com/user-attachments/assets/41b39818-a95a-4083-b044-d1305ecda055" />
-<img width="175" height="266" alt="image" src="https://github.com/user-attachments/assets/ace5c54c-9abd-4dc1-bed1-686198bfa71b" />
+<div align="center">
+<img src="https://github.com/user-attachments/assets/41b39818-a95a-4083-b044-d1305ecda055">
+</div>
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/ace5c54c-9abd-4dc1-bed1-686198bfa71b">
+</div>
 
    - Pod
 ```yaml
