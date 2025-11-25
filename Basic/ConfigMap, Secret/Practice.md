@@ -172,8 +172,7 @@ file-c.txt
 4. ConfigMap 편집
 ```json
 {
-	"file-c.txt": "Content123
-		"
+	"file-c.txt": "Content123"
 }
 ```
    - 현재 pod-file 내용은 변경되지 않지만, 해당 pod 삭제 후 재생성하면 값이 변경
