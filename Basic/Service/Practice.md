@@ -34,8 +34,8 @@ spec:
     app: pod
   ports:
   - port: 9000 # 9000번으로 접근할 때,
-    targetPort: 8080 # 서비스의 타켓이 되는 컨테이너의 8080 포트로 연
-  # type: Container # 클러스터 IP는 생략 가능
+    targetPort: 8080 # 서비스의 타켓이 되는 컨테이너의 8080 포트로 연결
+  # type: ClusterIP # 클러스터 IP는 생략 가능
 ```
 
    - Master Node에서 Service IP:Port 호출 (Service-IP : Service 생성 후 만들어진 IP를 확인)
