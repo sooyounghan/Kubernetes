@@ -1,7 +1,7 @@
 -----
 ### Pod 실습
 -----
-1. Pod : 한 Pod에 여러 컨테이너를 생성하는 예제 (Dashboard 상단위 + 버튼으로 추가)
+1. Pod : 한 Pod에 여러 컨테이너를 생성하는 예제 (Dashboard 상단 위 + 버튼으로 추가)
 ```yaml
 apiVersion: v1
 kind: Pod
