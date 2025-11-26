@@ -168,7 +168,7 @@ spec:
           containers:
           - name: container
             image: kubetm/init
-            command: ["sh", "-c", "echo 'job start';sleep 140; echo 'job end'"] # 2분 20초 동안 Running 중인 Pod 생
+            command: ["bash", "-c", "echo 'job start';sleep 140; echo 'job end'"] # 2분 20초 동안 Running 중인 Pod 생
           terminationGracePeriodSeconds: 0
 ```
    - replace
