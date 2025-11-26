@@ -32,7 +32,7 @@ kind: ReplicaSet
 metadata:
   name: replica1
 spec:
-  replicas: 1 # Pod가 1개있으므로 replicaSet 1로 지
+  replicas: 1 # Pod가 1개있으므로 replicaSet 1로 지정
   selector:
     matchLabels: 
       type: web # key, value를 pod와 일치하게 지정
