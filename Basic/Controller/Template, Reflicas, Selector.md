@@ -38,4 +38,4 @@
        * In : Key와 Value 수 지정 가능 (키를 A라고 설정하고, Value 수를 2, 3으로 설정하면 키가 A인 Pod 중 Value가 2, 3인 두 Pod만 선택)
        * NotIn: In과 반대 기능 (2와 3이 들어가 있지 않은 Pod 선택)
 
-6. ReplicaSet은 다양한 방식으로 Pod를 선택할 수 있는 Selector 옵션 제
+6. ReplicaSet은 다양한 방식으로 Pod를 선택할 수 있는 Selector 옵션 제공
