@@ -129,7 +129,7 @@ spec:
   type: NodePort
 ```
    - kubernetes dahsboard UI Port가 30000라서 실습 port는 30001로 설정
-   - Volume (Node) : 공유유
+   - Volume (Node) : 공유
      + Pod
 ```yaml
 apiVersion: v1
