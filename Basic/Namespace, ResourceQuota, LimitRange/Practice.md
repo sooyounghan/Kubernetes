@@ -54,7 +54,7 @@ metadata:
 ```
    - Service 2
      + 타 Namespace의 Pod와 연결이 되는지 확인하기
-     + Namespace가 다를 경우 Object 이름이 중복 가능한지 확인하
+     + Namespace가 다를 경우 Object 이름이 중복 가능한지 확인
 ```yaml
 apiVersion: v1
 kind: Service
