@@ -1,8 +1,9 @@
 -----
 ### Practice - DaemonSet, Job, CronJob
 -----
-
-<img width="886" height="232" alt="image" src="https://github.com/user-attachments/assets/95f8604b-f174-49f3-a1c4-0e6555e7e123" />
+<div align="center">
+<img src="https://github.com/user-attachments/assets/95f8604b-f174-49f3-a1c4-0e6555e7e123">
+</div>
 
 1. DaemonSet
    - 모든 Node에 Pod를 하나씩 생성시킴 (예) 노드별 성능 / 로그 수집, Volume 솔루션)
