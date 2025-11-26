@@ -93,7 +93,7 @@ spec:
    - Job2
      + completions : 총 생성 시킬 Pod 수
      + parallelism : 동시에 생성 시킬 Pod 수
-     + activeDeadlineSeconds : 30초가 될 때까지 모든 작업이 완료되지 않으면 실행중인 Pod는 강제로 삭제되, 완료된 Pod만 남아있게 됩니다.
+     + activeDeadlineSeconds : 30초가 될 때까지 모든 작업이 완료되지 않으면 실행중인 Pod는 강제로 삭제되, 완료된 Pod만 남아있게 됨
 ```yaml
 apiVersion: batch/v1
 kind: Job
