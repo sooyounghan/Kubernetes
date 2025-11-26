@@ -68,23 +68,14 @@ Version : v1
 
    - app:v2로 업그레이드
      + Dashboard : Deployment > Edit > template의 spec 수정
-```bash
-[root@k8s-master ~]# while true; do curl 10.101.58.211:8080/version; sleep 1; done
-Version : v1
-Version : v1
-Version : v1
-Version : v1
-Version : v1
-Version : v1
-Version : v1
-```
-
    - kubectl
 ```bash
 // kubectl set image deployment <deployment-name> <container-name>=<image>
 kubectl set image deployment deployment-1 container=kubetm/app:v2
 ```
-<img width="718" height="192" alt="image" src="https://github.com/user-attachments/assets/a1272738-ce5d-45a4-b5e7-01c5ff055160" />
+<div align="center">
+<img src="https://github.com/user-attachments/assets/a1272738-ce5d-45a4-b5e7-01c5ff055160">
+</div>
 
    - 이 상태에서 V3으로 업데이트하면, V1의 ReplicaSet은 삭제
 
