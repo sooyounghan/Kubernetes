@@ -23,7 +23,7 @@
 
 3. Rolling Update
    - 서비스가 운영 중인 상태에서, 새로운 버전으로 템플릿을 교체되면서 Rolling Update 시작
-   - 먼저, ReplicaSet을 하나 만들고, ReplicaSet이 1이므로, Pod가 하나 만들어지면서, V1 Label과 똑같으 라벨이 만들어지면서 Service 연결
+   - 먼저, ReplicaSet을 하나 만들고, ReplicaSet이 1이므로, Pod가 하나 만들어지면서, V1 Label과 똑같은 라벨이 만들어지면서 Service 연결
    - 이제 이 Service에 연결하면 V1과 V2의 트래픽이 분산되어 보내지게 됨
    - 그런 다음, ReplicaSet을 1로 변경하면서 Pod가 하나 줄어들고, 삭제가 완료되면 V2의 Replicas를 2로 만들어서 하나를 더 늘리고, 마지막으로 V1을 0으로 만들면서 남은 Pod를 없앰
    - ReplicaSet을 지우지는 않고 배포를 종료
