@@ -2,7 +2,7 @@
 ### Template, Reflication Controller, ReplicaSet, Selector
 -----
 <div align="center">
-<img src="https://github.com/user-attachments/assets/be4e8ff6-202b-4977-ae28-a7208d4f5385">
+<img src="https://github.com/user-attachments/assets/716d83f4-b8d9-4410-95d4-6174c474acc8">
 </div>
 
 1. Template
