@@ -47,6 +47,7 @@
 <div align="center">
 <img src="https://github.com/user-attachments/assets/2313de69-db52-497f-89c3-97644005762f">
 </div>
+
 5. ExternalName 서비스는 특정 외부 도메인 주소를 넣을 수 있음
    - Google 도메인 이름을 넣으면 DNS를 거쳐서 Google IP를 가져올 수 있고, Pod는 이 서비스를 통해 데이터를 가져오도록 한다면, 추후 데이터를 GitHub에 가져오도록 변경하면, Pod 수정 없이 서비스의 ExternalName만 변경해주면 됨
 
