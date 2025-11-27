@@ -61,3 +61,6 @@
    - Kubernetes가 HTTP GET으로 5초 후에 해당 path를 체크해보고, 200 OK를 받게 되고, 10초 후 또 체크를 해서 200 OK를 받으면 서비스가 정상 운영 중이라고 판단
    - 어느 순간 Path를 호출했는데, Internal Server Error를 발생하면서 500 Internal Server Error 발생 (서비스 장애) 하지만, Pod는 Running 상태
    - 3회를 Status 500을 받게 되면, Kubernetes는 문제가 있다고 판단해 이 Pod를 Restart
+<div align="center">
+<img src="https://github.com/user-attachments/assets/4f6a73ae-6747-4a60-8987-908e27b35bd5">
+</div>
