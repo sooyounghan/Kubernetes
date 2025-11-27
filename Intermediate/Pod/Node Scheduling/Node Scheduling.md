@@ -37,7 +37,7 @@
 
 4. Node에 할당 제한 - Toleration / Taint
    - 특정 노드에는 아무 Pod나 할당이 되지 않도록 제한하기 위해 사용
-   - Node 5는 높은 사양 그래픽 카드를 요구하는 앱을 돌리는 용도로 GPU를 설정해놨을 때, 운영자는 taint를 설정
+   - Node 1는 높은 사양 그래픽 카드를 요구하는 앱을 돌리는 용도로 GPU를 설정해놨을 때, 운영자는 taint를 설정
    - 일반적인 Pod들은 Scheduler가 이 노드에 할당시키지 않고, 직접 Pod가 Node 5를 지정을 하고 할당하려 해도 되지 않음
    - 이 노드에 할당이 되려면 Pod는 toleration을 설정해야 할당 가능
 
@@ -61,7 +61,6 @@
        * 따라서, 스케줄러는 최초 CPU 자원을 보고 점수를 매겨 Node 1에 할당시키려고 하지만, Pod의 가중치가 합산되어 다시 점수를 매기고, 매긴 점수가 높은 쪽으로 할당
 
 
-
 6. PodAffinitiy
    - 노드들이 있고, 두 노드는 a-team이라는 Key를 가진 Label을, 그리고 남은 두 노드에는 b-team이라는 Key를 가진 Label 설정
    - Pod-Affinity
@@ -77,9 +76,10 @@
 <div align="center">
 <img src="https://github.com/user-attachments/assets/a60722a4-841c-41a9-9008-1a6b08668f22">
 </div>
+
 7. Taint, Toleration
    - Node 1은 타 노드들과 달리 GPU가 구성되어 있음
-   - 일반적인 Pod들이 이 Node에 스케줄링 되는 걸 막으려면 tainit를 Node에 설정
+   - 일반적인 Pod들이 이 Node에 스케줄링 되는 걸 막으려면 taint를 Node에 설정
      + taint에는 taint를 식별하는 Label인 Key, Value
      + effect라는 옵션이 있어, NoSchedule을 주면, 타 Pod들이 이 Node에 할당되지 않음
        * PrerferNoSchedule은 가급적 스케줄링이 안 되도록 설정하는 것이며, Pod가 다른 노드에 배치할 수 없는 상황이라면, taint가 붙은 노드에는 할당을 허용해줌
