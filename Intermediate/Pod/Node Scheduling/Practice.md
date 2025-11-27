@@ -143,7 +143,7 @@ spec:
    image: kubetm/app
  terminationGracePeriodSeconds: 0
 ```
-   - Web2 Pod : web2 Pod를 만들어 줬기 때문에 server2 Pod는 노드에 할당됩니다. 
+   - Web2 Pod : web2 Pod를 만들어 줬기 때문에 server2 Pod는 노드에 할당
 ```yaml
 apiVersion: v1
 kind: Pod
