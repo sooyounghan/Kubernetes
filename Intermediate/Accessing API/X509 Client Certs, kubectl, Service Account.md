@@ -24,5 +24,5 @@
 
 4. Service Account
    - Secret이 존재 : 내용으로는 CA crt 정보와 토큰 값이 존재
-   - Pod를 만들면, Service Account가 연결이 되고 Pod는 이 토큰값을 통해 API 서버에 연결할 수 있는데, 즉, 토큰값을 알면 사용자도 이 값을 가지고 API 서버에 접근할 수 있으
+   - Pod를 만들면, Service Account가 연결이 되고 Pod는 이 토큰값을 통해 API 서버에 연결할 수 있는데, 즉, 토큰값을 알면 사용자도 이 값을 가지고 API 서버에 접근할 수 있음
   
