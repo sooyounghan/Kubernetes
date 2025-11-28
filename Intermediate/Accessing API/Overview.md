@@ -20,6 +20,6 @@
    - 결국 Kubernetes에는 유저들이 API 서버에 접근하기 위한 User 계정과 Pod들이 접근하기 위한 Service Account로 분류
 
 4. Authentication : Kubernetes API에 접근
-   - 접근을 한 다음, 필요로 하는 자원을 조회할 수 있는 권한
-   - 만약, NameSpace로 Pod가 분리되어 있는 상태에서 NameSpace에 있는 Pod가 API 서버에 접근을 할 수 있다고 해서, A NameSpace에 있는 Pod를 조회를 하는 것은 권한 여부에 따라 가능하게 할 수도 있고, 못하게 할 수 있음
-   - 권한까지 문제가 없다면 마지막으로 Admission Control이라고 해서, PV를 만들 때, 관리자가 용량을 1GB 이상 만들지 못하도록 설정을 했다면, Pod를 만들라는 API 요청이 들어왔을 때 Kubernetes는 설정된 크기를 넘지 못하도록 해야함
+   - 접근을 한 다음, 필요로 하는 자원을 조회할 수 있는 권한 (Authentication)
+   - 만약, NameSpace로 Pod가 분리되어 있는 상태에서 NameSpace에 있는 Pod가 API 서버에 접근을 할 수 있다고 해서, A NameSpace에 있는 Pod를 조회를 하는 것은 권한 여부에 따라 가능하게 할 수도 있고, 못하게 할 수 있음 (Authorization)
+   - 권한까지 문제가 없다면 마지막으로 Admission Control이라고 해서, PV를 만들 때, 관리자가 용량을 1GB 이상 만들지 못하도록 설정을 했다면, Pod를 만들라는 API 요청이 들어왔을 때 Kubernetes는 설정된 크기를 넘지 못하도록 해야함 (Admission Control)
