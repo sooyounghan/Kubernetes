@@ -46,7 +46,7 @@
      + Kubernetes 내 컴포넌트들 조차 DB에 접근 또는 타 컴포넌트들을 호출할 때 이 API를 통해서 통신
 
    - Worker Node Componet : Kuberentes를 설치할 때 kubelet가 설치 (각 노드마다 설치가 되고, 노드를 대표하는 에이전트 역할을 하는데, 자신의 노드에 있는 Pod를 관리하는 역할)
-     + kubelet이 직접 컨테이너를 만드는 것이 아닌, Controller Runtime이 실제 컨테이너를 생성하고 삭제하는 역할을 하는 구현체ㅈ가 존재
+     + kubelet이 직접 컨테이너를 만드는 것이 아닌, Controller Runtime이 실제 컨테이너를 생성하고 삭제하는 역할을 하는 구현체가 존재
      + 현재 Docker를 설치해서 사용하므로 이 외에도 컨테이너를 만들어주는 RKT, Core OS 등 존재
 
    - 예) 사용자가 ReplicaSet을 만들 때 과정
