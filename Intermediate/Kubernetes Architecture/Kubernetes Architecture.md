@@ -15,6 +15,7 @@
 
 3. Storage : 데이터를 안정적으로 저장하는 방식
    - hostPath를 사용하는 방법
+   - Storage를 사용하는 방법
    - 내부 클러스터 내에 Third-Party에서 제공하는 Storage Solution을 설치하는 방법이 존재
    - 어떤 방식의 Storage를 사용하던 간에 Volume의 Type에는 3가지 종류로 나눠질 수 있음 : FileStorage, BlockStorage, ObjectStorage
 
