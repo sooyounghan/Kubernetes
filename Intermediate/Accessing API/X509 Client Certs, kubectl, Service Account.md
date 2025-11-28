@@ -6,9 +6,9 @@
 </div>
 
 1. Cluster에 6443 Port로 API 서버가 열려 있으며, 사용자는 HTTPS 접근을 하려면 Kuberentes 설치 시 kubeconfig라고 해서 Cluster에 접근할 수 있는 정보들이 있는데, 해당 파일 안에 인증서 내용이 존재 : 클라이언트 키와 인증서를 복사해서 가지고 와야 함
-   - 최초 발급기관과 클라이언트에 대한 개인키를 만들고, 이 개인키를 가지고 인증서를 만들기 위한 인증요청서라는 CSR 파일을 생성
+   - 최초 발급기관(CA)과 클라이언트(Client)에 대한 개인키를 만들고, 이 개인키를 가지고 인증서(CA csr, Client csr)를 만들기 위한 인증요청서라는 CSR 파일을 생성
    - CA의 경우, 인증요청서를 가지고 바로 인증서를 만듬 : kubeconfig에 있는 CA crt
-   - 하지만, 클라이언트 인증서 경우 발급기간, 개인키와 인증서 그리고 클라이언트 요청서 모두 합쳐서 만들어져서 클라이언트 인증서가 kubeconfig 파일에 Client crt로 Kubernetes API에 인증이 되서 리소스 조회 가능
+   - 하지만, 클라이언트 인증서 경우 발급기간, 개인키와 인증서 그리고 클라이언트 요청 시 모두 합쳐서 만들어져서 클라이언트 인증서가 kubeconfig 파일에 Client crt로 Kubernetes API에 인증이 되서 리소스 조회 가능
    - accept-hosts라는 옵션을 통해 8001번 Port로 Proxy를 열어두면, 외부에서 HTTP로 접근할 수 있게 되는데, kubectl이 인증서를 가지고 있으므로 사용자는 아무런 인증서 없이 접근 가능
 
 2. 외부 서버에 kubectl를 설치해서 Multi-Cluster에 접근
