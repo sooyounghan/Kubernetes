@@ -25,7 +25,10 @@ Enter Export Password: (엔터)
 Verifying - Enter Export Password: (엔터)
 ```
    - 내 컴퓨터로 파일 이동 (FTP tool 이용 필요) [XFTP 다운로드 : ```https://www.netsarang.com/en/free-for-home-school/```]
-<img width="897" height="476" alt="image" src="https://github.com/user-attachments/assets/6f536b9c-1c62-499d-aa3a-7247db4c5b84" />
+<div align="center">
+<img src="https://github.com/user-attachments/assets/6f536b9c-1c62-499d-aa3a-7247db4c5b84">
+</div>
+
 ```bash
 curl --cert client.pfx -k https://192.168.56.30:6443/api/v1/nodes
 ```
