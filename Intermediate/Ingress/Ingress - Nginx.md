@@ -17,7 +17,7 @@
      + 따라서, 별도의 IP 로드 밸런싱을 해주는 장비가 필요 없음
 
 2. 사용 예 : Canary Upgrade
-   - V1의 App들이 구동되서 서비스가 되고 있는 상태에서 테스트 할 버전 V2의 App을 구도시키고 Ingress를 만들어서 두 버전의 서비스를 연결하면, Ingress를 통해 접근을 했을 때, 10%의 일부 트래픽만 V2로 가도록 설정 가능
+   - V1의 App들이 구동되서 서비스가 되고 있는 상태에서 테스트 할 버전 V2의 App을 구동시키고 Ingress를 만들어서 두 버전의 서비스를 연결하면, Ingress를 통해 접근을 했을 때, 10%의 일부 트래픽만 V2로 가도록 설정 가능
    - 해당 % 수치를 변경하거나 연결이 될 때, 들어있는 헤더 값 별로 트래픽 조정도 가능
 
 <div align="center">
@@ -29,7 +29,7 @@
    - Ingress에는 Host로 Domain Name을 넣을 수 있고, 이 도메인으로 들어오는 트래픽은 Path에 따라 원하는 서비스로 연결을 하라는 내용이 주 설정
    - 해당 Rule을 실행할 구현체를 만들어야 함 : Kubernetes에서 이 구현체를 만들기 위해 별도 플러그인을 설치해야 함
      + Ingress Controller 라고도 하며, 대표적으로 Nginx이나 Kong이 있으며, 그 외에 많은 컨트롤러도 존재
-     + 만약, Nginx를 설치하게 되면, Nginx에 대한 Namespace가 생기고, 이 위에 Deployment와 Replicaset이 만들어지며, 실제 Ingress의 구현체인 Nginx Pod가 생성
+     + 만약, Nginx를 설치하게 되면, Nginx에 대한 Namespace가 생기고, 이 위에 Deployment와 ReplicaSet이 만들어지며, 실제 Ingress의 구현체인 Nginx Pod가 생성
      + 그럼 Pod가 Ingress Rule이 있는지 보고 있다면, Role대로 서비스를 연결해주는 역할을 함
      + 따라서, 이 Rule에 따라 서비스를 연결해주는 역할을 함
 
