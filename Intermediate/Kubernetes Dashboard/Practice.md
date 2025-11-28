@@ -89,9 +89,6 @@ Enter Import Password: (엔터)
 ```yaml
 kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token -o jsonpath='{.data.token}' | base64 --decode
 ```
-<div align="center">
-<img src="https://github.com/user-attachments/assets/bab91c78-1e8b-470f-90e3-111586933f76">
-</div>
 
   - URL 입력
 ```
@@ -99,6 +96,3 @@ https://192.168.56.30:6443/api/v1/namespaces/kubernetes-dashboard/services/https
 ```
 
    - Dashboard에서 토큰 입력(Beare 없이 token만) 후 로그인 
-<div align="center">
-<img src="https://github.com/user-attachments/assets/f56fb116-9e90-422a-a7db-1cf92bee0ccd">
-</div>
