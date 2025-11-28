@@ -23,7 +23,7 @@
      + 따라서, Cluster Role 하나만 생성하여 모든 Namespace에 있는 Role Binding이 Cluster Role을 지저할 수 있으면, 권한에 대해 변경사항이 있을 때, 하나만 수정하면 되서 관리가 수월해짐
      + 따라서, 이런 방식은 모든 Namespace에 같은 권한을 만들어 관리할 때 유용
 
-6. Namespace을 만들면, 서비스 계정과 Token Key가 담겨져 있는 Service가 존재
+6. Namespace을 만들면, Secret 계정과 Token Key가 담겨져 있는 Service가 존재
    - apiGroups와 resources 속성이 Pod일 경우 : Pod는 Core API이므로, apiGroups에 넣지 않아도 되며, resoucres가 job일 경우, 해당 API 그룹에 넣어줘야 함
    - verbs는 속성으로 조회만 가능하도록 설정
    - Role Binding을 만들고, roleRef라는 속성에 Role을 연결하고, subjects라는 속성에 Service Account를 연결
