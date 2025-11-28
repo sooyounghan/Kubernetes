@@ -41,7 +41,7 @@
      + 사용자가 Ingress에 지정된 도메인 이름으로 들어오면, 해당 서비스에 연결이 되고 여러 개를 만들 수 있음
 
 <div align="center">
-<img src="https://github.com/user-attachments/assets/0dfe81e6-8379-4409-b2e4-2c07c4a0b6bf">
+<img src="https://github.com/user-attachments/assets/ab66bf9e-6aae-4ea3-a02e-9a91a9cef5f4">
 </div>
 
 4. Ingress의 기능
