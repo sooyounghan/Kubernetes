@@ -80,5 +80,3 @@
 
 5. NodePort 타입의 서비스를 연결하면 모든 Node에 있는 kube-proxy가 자신의 노드의 30000번 대의 NodePort를 열어주며, 외부에서 이 Host IP의 Port로 트래픽이 들어오게 되면, iptables에서 이 트래픽을 Calico 네트워크 플러그인으로 전송
    - 여기서부터는 클러스터 IP와 같이 NAT 기능을 통해 해당 IP로 변환이 되면서 Pod 네트워크 영역으로 넘어감
-
-   - 
