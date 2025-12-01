@@ -8,7 +8,7 @@
 1. Networking Architecture
    - Kubernetes를 이루는 Master와 Worker Node들이 있고, Pod 네트워킹에 대한 영역 존재
      + pod-network-cidr : 네트워크 대역에 대해 영역을 설정한 부분
-   - 다른 Pod가 생성됐을 때, 이 두 Pod 간의 통신은 Kubernetes에서 노드마다 설치가 되는 네트워크 플러그인에 의해 통
+   - 다른 Pod가 생성됐을 때, 이 두 Pod 간의 통신은 Kubernetes에서 노드마다 설치가 되는 네트워크 플러그인에 의해 통신
    - Kubernetes에서 기본적으로 제공하는 kube-proxy라는 네트워크 플러그인이 있는데, 네트워크 기능이 많이 제한적이므로 잘 사용하지 않고, CNI라는 네트워크 인터페이스가 있는데, 이를 통해 다양한 오픈소스 네트워크 플러그인들을 설치 가능
      + Calico : 네트워크 플러그인으로, 네트워크 플러그인이 하는 역할은 노드 위에 Pod들 간 통신과 외부 네트워크를 통한 타 Node 위에 Pod들 간의 통신을 담당
 
