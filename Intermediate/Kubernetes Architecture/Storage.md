@@ -46,10 +46,10 @@
    - Control Plugin Pod : deployment로 주로 만들어지고, CSI를 담당하는 주요 기능에 대한 역할
    - Node Plugin Pod : 해당 Pod들이 DaemonSet으로 만들어지고, 각 노드별 해당 솔루션으로서의 기능인 볼륨을 생성하는 역할
    - Longhorn에 대한 Storage Class가 생성
-     + 이를 이용해 PVC를 만들면, Provisioning은 PVC를 바라보고 있다가, PVC가 생성된 것을 확인하고 이에 맞는 PV를 만들어서 PVC와 연결
+     + csi-provisioner : 이를 이용해 PVC를 생성하면 이를 바라보고 있다가, PVC가 생성된 것을 확인하고 이에 맞는 PV를 만들어서 PVC와 연결
      + csi-resizer : PVC를 모니터링하면서 PVC에 대한 Volume Size가 변하는지 보고 있다가 사용자가 볼륨의 크기를 변경하면 이를 처리
      + csi-snapshotter (Longhorn에는 구현되지 않음) : 볼륨에 대한 스냅샷을 찍음
-     + PV가 만들어져 있으면, 특정 노드 위 CSI 플러그인은 해당 노드에 볼륨 솔루션인 매니저를 통해 볼륨을 생성하라고 요청하며, 해당 요청은 최종적으로 엔진까지 가서 엔진이 볼륨 생성
+     + csi-plugin manager : PV가 만들어져 있으면, 특정 노드 위 CSI 플러그인은 해당 노드에 볼륨 솔루션인 매니저를 통해 볼륨을 생성하라고 요청하며, 해당 요청은 최종적으로 엔진까지 가서 엔진이 볼륨 생성
        * Pod를 PVC에 붙이게 되면 Volume Attachment라는 Object가 생성되며, 이를 감시하고 있던 csi-attacher가 볼륨과 Pod를 연결
    - 솔루션 자체적으로 UI가 있는데, 이 UI들은 매니저와 직접 통신하므로 모니터링과 직접 제어가 가능
    - 솔루션 자체적으로 해당 노드에 별도로 설치해야 되는 패키지가 있으면 설치도 해줘야 함
