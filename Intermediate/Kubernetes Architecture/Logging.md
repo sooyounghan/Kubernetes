@@ -7,14 +7,14 @@
 
 1. Kubernetes Architecture Logging : App의 Log 데이터를 의미하며, 모니터링은 CPU나 메모리와 같은 자원을 이야기하는 것
    - Kubernetes가 자체적으로 어느 정도 제공되는 Core Pipeline과 추가적으로 플러그인을 설치해서 기능을 더 강화할 수 있는 Service Pipleline이 존재
-   - Core Pipleline
+   - Core Pipeline
      + Worker Node에는 kubelet과 Container Runtime 영역이 존재
      + 노드의 자원인 CPU, 메모리와 데이터를 저장하는 디스크가 존재
      + Kuberenetes로 Pod 생성 요청을 받으면, 해당 노드 위에 존재하는 kubelet은 Pod를 생성하고 그 안에 있는 컨테이너 생성은 컨테이너 런타임에게 위임 (여러 종류 컨테이너 런타임을 만들어주는 솔루션이 존재하지만, 현재 Docker로 진행)
      + Worker Node의 디스크를 사용하면서 데이터를 쓰고 로그를 생성하며, 서비스가 기동되면서 CPU와 메모리 자원도 사용
      + 각 노드에 있는 kubelent은 별도로 설치되어 있는 Resource 예측기인 cAdvisor를 통해 CPU 메모리 정보를 가져올 수 있으며, 각 노드의 모니터링 정보는 metrics-server로 전송되고, 사용자는 kubectl top 명령으로 kube-apiserver를 통해 정보를 조회하여 kubelet을 통해 해당 컨테이너의 kublet log 파일을 볼 수 있음
 
-   - Service Pipleline
+   - Service Pipeline
      + kubelet처럼 모든 노드에 설치가 되어서 데이터를 가져오는 역할을 위해 DaemonSet을 이용한 Agent 영역이 존재하는데, Container Runtime 혹은 Wokrer Node를 통해 Log와 Resource 자원을 수집하는 역할을 함
      + 그리고 별도의 Worker Node에 Metric 서버와 같이 각 노드에 Metric을 수집하고 분석하는 서버 영역(Metric Aggregator / Analytics)이 존재 : 많은 데이터가 저장되므로 별도의 저장소(Metrics Store)를 구성하는 것이 좋음
      + Web UI가 수집 서버로 쿼를 하면서 필요한 정보를 사용자에게 보여줌
