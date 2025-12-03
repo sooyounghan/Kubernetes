@@ -79,3 +79,96 @@ https://192.168.56.30:30000/#/login
 <div align="center">
 <img src="https://github.com/user-attachments/assets/616911eb-04ed-4b83-8271-a3b475779b6d">
 </div>
+
+5. 구간별 상태 확인
+<div align="center">
+<img src="https://github.com/user-attachments/assets/06488b50-1688-4412-8412-b5607b871d36">
+</div>
+
+   - 내 PC 네트워크 확인 : 윈도우 > 실행 > cmd 입력 > 확인
+```bash
+c:\사용자>ipconfig
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/0f72f482-9b13-47b7-8a26-41a80b72d573">
+</div>
+
+   - PC 자원 확인 : 윈도우 하단 상태바 우클릭 > 작업관리자 > 성능 탭
+<div align="center">
+<img src="https://github.com/user-attachments/assets/802a4685-de81-4260-9583-c479533cfaf9">
+</div>
+
+   - VirtualBox 설치 버전 확인 : Virtualbox 실행 > 도움말 > Virtualbox 정보
+<div align="center">
+<img src="https://github.com/user-attachments/assets/2bc9505b-072f-4d44-896c-9562b06dcf9c">
+</div>
+
+   - Vagrant 설치 버전 확인 : 윈도우 > 실행 > cmd 입력 > 확인
+```bash
+c:\사용자>vagrant --version
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/fe6318f5-35c4-4272-9a49-33603dfb4954">
+</div>
+
+   - 원격접속(MobaXterm) 설치 버전 확인 : MobaXterm 실행 > Help > About MobaXterm
+<div align="center">
+<img src="https://github.com/user-attachments/assets/a5294cd9-78f0-493b-9a9b-ebf574437635">
+</div>
+
+   - VirtualBox VM 확인 : Virtualbox 실행 > VM Name 확인 (네이밍 : ```<Vagrant 폴더명>_<VM Name>_<ramdom>```)
+<div align="center">
+<img src="https://github.com/user-attachments/assets/ae9ee303-f99d-4c90-91e9-96e1d5137a6e"">
+</div>
+
+   - VM에 적용된 NAT 확인 : Virtualbox 실행 > k8s_master-node 마우스 우클릭 > 설정 > 네트워크 > 어댑터 1
+<div align="center">
+<img src="https://github.com/user-attachments/assets/fb0e0a50-c275-4c53-a2fd-4a4e4c1c4a0c">
+</div>
+
+   - VM에 적용된 Host-Only Network 확인 : Virtualbox 실행 > k8s_master-node 마우스 우클릭 > 설정 > 네트워크 > 어댑터 2
+<div align="center">
+<img src="https://github.com/user-attachments/assets/5c3c51c0-b026-4959-aef3-0377f4c337be">
+</div>
+
+   - VirtualBox Host-Only cidr 확인 : 파일 > 도구 > Network Manager
+<div align="center">
+<img src="https://github.com/user-attachments/assets/223efb72-3bd3-4fc8-aa20-e500f90db899">
+</div>
+
+   - Rocky Linux 버전 확인 : k8s-master 원격접속 후 명령어 실행
+```bash
+[root@k8s-master ~]# cat /etc/*-release
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/953593e7-b4b4-471a-b50e-362ceb695f7a">
+</div>
+
+   - Hostname 확인 : k8s-master 원격접속 후 명령어 실행
+```bash
+[root@k8s-master ~]# hostname
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/5163318a-21a2-4d27-9973-ce9a8541641d">
+</div>
+
+   - Network 확인 : k8s-master 원격접속 후 명령어 실행
+```bash
+[root@k8s-master ~]# ip addr
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/3f6e16eb-b140-4bc8-a638-905a6b7a15f4">
+</div>
+
+  - 자원(CPU, Memory) 확인 : k8s-master 원격접속 후 명령어 실행
+```bash
+[root@k8s-master ~]# lscpu
+[root@k8s-master ~]# free -h
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/c39c6833-d0f3-4ee2-a7d6-c41c6efc1b23">
+</div>
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/d1ab8b12-8f1d-478e-9b74-e610cb237140">
+</div>
