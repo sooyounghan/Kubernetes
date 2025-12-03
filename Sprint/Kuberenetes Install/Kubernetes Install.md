@@ -85,6 +85,20 @@ https://192.168.56.30:30000/#/login
 <img src="https://github.com/user-attachments/assets/06488b50-1688-4412-8412-b5607b871d36">
 </div>
 
+   - config.vm.box = "rockylinux/8" (Rocky Linux 8 버전 사용)
+   - config.vm.define "master-node" (VM Name)
+     + master.vm.hostname = "k8s-master" (Hostname)
+     + master.vm.network = "prviate_network" (Host-Only Network : 내 PC에서만 사용할 수 있는 네트워크 망)
+     + ip: "192.168.56.30" (IP를 설정하면, Linux에 해당 IP로 할당)
+     + 스크립트를 생성하지 않아도 Vagrant가 기본적으로 생성하는 네트워크 존재 : NAT라는 네트워크 (IP도 알아서 할당해주는데, NAT는 VM과 외부 인터넷을 연결시켜주는 역할) - Containerd Package, Kubernetes Package 다운로드
+
+   - 위 그림의 경우 ```192.168.219```까지 고정이며, 네번쨰 자리부터 1 ~ 255까지 생성 가능한데, 100으로 자동 할당
+     + Host-Only Network의 경우에는, ```192.168```까지 고정이며, CIDR를 설정하면 지정한 범위 내 IP 할당 (네트워크 대역폭이 겹칠 때, 공유기와 VirtualBox가 같은 IP를 생성하여 IP 충돌 발생)
+
+   - vb.memory = 4096 (4GB)
+   - vb.cpus = 4 (CPU 4코어)
+   - 위 설정에 따라 VM의 자원이 할당 
+
    - 내 PC 네트워크 확인 : 윈도우 > 실행 > cmd 입력 > 확인
 ```bash
 c:\사용자>ipconfig
