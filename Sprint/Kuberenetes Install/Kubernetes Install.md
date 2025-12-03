@@ -86,7 +86,7 @@ https://192.168.56.30:30000/#/login
 </div>
 
    - config.vm.box = "rockylinux/8" (Rocky Linux 8 버전 사용)
-   - config.vm.define "master-node" (VM Name)
+   - config.vm.define "master-node" (VM Name / 마스터 노드를 구성하는 부분)
      + master.vm.hostname = "k8s-master" (Hostname)
      + master.vm.network = "prviate_network" (Host-Only Network : 내 PC에서만 사용할 수 있는 네트워크 망)
      + ip: "192.168.56.30" (IP를 설정하면, Linux에 해당 IP로 할당)
@@ -99,6 +99,43 @@ https://192.168.56.30:30000/#/login
    - vb.cpus = 4 (CPU 4코어)
    - 위 설정에 따라 VM의 자원이 할당 
 
+   
+   - $default_script, $master_script : Shell 명령어를 별도로 실행할 수 있게 $master_script라는 변수 설정되어, 하단의 명령어 스크립트 수행 (마스터 노드 뿐 아니라 워커 노드도 추가될 에정)
+     + 설치 순서 : $default_script가 실행이 되고, $master_script 실행
+
+6. Kubernetes 설치 (가장 보편적인 방법 : kubeadm로 Cluster 설치)
+<div align="center">
+<img src="https://github.com/user-attachments/assets/d8003ba8-c232-474d-a1bc-174fb7cfec5e">
+</div>
+
+   - Kubernetes 설치 (모든 Node)
+     + Rocky Linux 기본 설정 : 패키지 업데이트 타임존 설정
+     + kubedam 설치 전 사전 작업 : 방화벽 해제, swap 비활성화
+     + 컨테이너 런타임 설치
+       * 컨테이너 런타임 설치 전 사전 작업 : iptables 세팅
+       * 컨테이너 런타임 (containterd 설치)
+          * containerd 패키지 설치 (Docker 활용)
+            * Docker Engine 설치 : Repository 설정, containerd 설치
+       * 컨테이너 런타임 : CRI 활성화
+     + kubedam 설치 : Repository 설치, SELinux 설정, kubelet / kubedam / kubectl 패키지 설치
+
+
+   - Master Node 세팅
+     + containerd : 1.6.21
+     + kubedam으로 클러스터 생성
+       * 클러스터 초기화 (Pod Network 세팅 (CIDR를 지정해 Pod 네트워크 대역 새로 지정)
+       * kubectl 사용 설정 (Kubernetes 설치가 완료되면, Kubernetes에 접속할 수 있는 인증서가 발급되며, 이 인증서를 가져와 kubectl이 사용할 수 있게 설정하는 것으로, kubectl로 kube-apiserver로 API를 전송하면서 Container Runtime Interface 통신을 가능하게 함)
+       * CNI Plugin 설치 (Calico / 컨테이너 들 간의 통신을 관리하는 인터페이스 [CRI : 컨테이너를 생성 및 관리를 위해 Kubernetes와 Kubernetes Runtime 간의 인터페이스])
+         * 설치가 완료되면, Linux Network에 30000번 Port 개방
+         * 해당 포트로 접속을 하면, 트래픽은 Linux의 iptables를 거쳐서, calico의 네트워크 망으로 들어가서 이 망 내에서 Dashboard의 IP를 탐색
+         * iptables에서 30000번 포트가 Dashborad IP와 매칭이 되어있는 것을 발견
+       * Master에 Pod를 생성할 수 있도록 설정 (kubedam에서 생성된 컴포넌트들이나 Dashboard는 Pod들이 Master 위에 올라가도록 설정 (일반적으로 올리지 않는 것이 정석))
+
+     + 쿠버네티스 편의 기능 설치
+       * kubectl 자동완성 기능
+       * Dashboard 설치
+       * Metrics Server 설치 : 컨테이너에 대한 CPU나 메모리는 컨테이너 런타임에 의해 기본적으로 관리되는데, 이 서버를 설치하면 Metric 정보를 조회하고, 대시보드에 CPU와 Memory 정보 표시
+           
    - 내 PC 네트워크 확인 : 윈도우 > 실행 > cmd 입력 > 확인
 ```bash
 c:\사용자>ipconfig
