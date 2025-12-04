@@ -2,8 +2,8 @@
 ### 모니터링 설치 - Loki-Stack
 -----
 1. 해당 설치는 Storage 연동을 따로 할당하지 않았기 때문에 VM이 재기동 될때, 기존 저장된 로그 데이터는 사라짐
-​2. Github(k8s-1pro)에서 Prometheus(with Grafana), Loki-Stack yaml 다운로드
-   - [k8s-master] Console 접속 후 아래 명령 실행
+2. Github(k8s-1pro)에서 Prometheus(with Grafana), Loki-Stack yaml 다운로드
+    - [k8s-master] Console 접속 후 아래 명령 실행
 ```bash
 [root@k8s-master ~]# yum -y install git
 
