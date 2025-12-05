@@ -263,13 +263,4 @@ spec:
 <img src="https://github.com/user-attachments/assets/d604de67-cc4c-4d3c-824b-2e08b0192eea" />
 </div>
 
-   - Label / Selector / Naming (1)
-<div align="center">
-<img src="https://github.com/user-attachments/assets/b51fc833-2d86-42fb-b072-d3170f190f0b" />
-</div>
-
-  - Label / Selector / Naming (2)
-<div align="center">
-<img src="https://github.com/user-attachments/assets/fad6e1bd-7c02-4ddd-bd9d-ff158b51aa94" />
-</div>
 
