@@ -39,7 +39,7 @@ spec:
       component: backend-server
       name: api-tester
       instance: api-tester-1231
-  replicas: 2 # Pdoe 2개 생성
+  replicas: 2 # Pod 2개 생성
   strategy:
     type: RollingUpdate 
   template: # 이 내용을 바탕으로 Pod 생
