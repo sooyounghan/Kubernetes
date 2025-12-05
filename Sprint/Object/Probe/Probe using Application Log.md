@@ -28,6 +28,6 @@ kubectl patch -n anotherclass-123 hpa api-tester-1231-default -p '{"spec":{"minR
 
   - [App 초기화] 중 시스템 연동 작업을 하고, [User 초기화] 중에 초기 데이터 로딩 작업이 있으며, 이 작업이 다 끝나야 [기동완료]가 되는 App 기동 상황
   - startupProbe가 5초 간격으로 호출 되고, 성공할 때까지 반복, 성공 후 readinessProbe와 livenessProbe가 시작
-  - livenessProbe는 바로 성공을 하지만, readinessProbe는 처음 실패 후에 [기동완료] 가 되서야 성공을 함
+  - livenessProbe는 바로 성공을 하지만, readinessProbe는 처음 실패 후에 [기동완료]가 되서야 성공을 함
 
 - livenessProbe와 readinessProbe는 10초 간격으로 계속 호출 됨
