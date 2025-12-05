@@ -2,7 +2,7 @@
 ### Application Log를 통한 Probe 동작 분석
 -----
 <div align="center">
-<imgsrc="https://github.com/user-attachments/assets/a3b4c90e-a24a-49b1-adda-adc9dedeff28" />
+<img src="https://github.com/user-attachments/assets/a3b4c90e-a24a-49b1-adda-adc9dedeff28" />
 </div>
 
 1. Pod의 Probe 설정
