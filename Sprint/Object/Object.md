@@ -2,12 +2,12 @@
 ### Object 그려보며 이해하기
 -----
 1. 강의 환경 구성하기
-   - master node에 접속해서 디렉토리 생성
+   - Master Node에 접속해서 디렉토리 생성
 ```bash
 [root@k8s-master ~]# mkdir -p /root/k8s-local-volume/1231
 ```
 
-  - Namespace
+  - Namespace : Object를 Grouping
 ```yaml
 apiVersion: v1
 kind: Namespace
@@ -18,7 +18,7 @@ metadata:
     managed-by: dashboard
 ```
 
-  - Deployment
+  - Deployment : Pod를 만들고 업그레이드 해주는 역할
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -106,7 +106,7 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: anotherclass-123
-  name: api-tester-1231
+  name: api-tester-1231 # 같은 종류의 Object끼리 이름 중복 불가
   labels:
     part-of: k8s-anotherclass
     component: backend-server
@@ -251,19 +251,25 @@ spec:
       stabilizationWindowSeconds: 120
 ```
 
-2.  Object 그려보며 이해하기
-    - Object 
-<img width="1138" height="642" alt="image" src="https://github.com/user-attachments/assets/90394ee4-7129-4a0b-86e9-01ff196cbf1f" />
-<img width="1140" height="651" alt="image" src="https://github.com/user-attachments/assets/d604de67-cc4c-4d3c-824b-2e08b0192eea" />
-
-    - Label / Selector / Naming (1)
-<img width="1355" height="646" alt="image" src="https://github.com/user-attachments/assets/b51fc833-2d86-42fb-b072-d3170f190f0b" />
-
-    - Label / Selector / Naming (2)
-<img width="1362" height="644" alt="image" src="https://github.com/user-attachments/assets/fad6e1bd-7c02-4ddd-bd9d-ff158b51aa94" />
-
-3. 강의에서 배포한 Object 삭제 (kubectl 명령)
+2. 강의에서 배포한 Object 삭제 (kubectl 명령)
 ```bash
 [root@k8s-master ~]# kubectl delete ns anotherclass-123
 [root@k8s-master ~]# kubectl delete pv api-tester-1231-files
 ```
+2.  Object 그려보며 이해하기
+    - Object 
+<div align="center">
+<img src="https://github.com/user-attachments/assets/90394ee4-7129-4a0b-86e9-01ff196cbf1f" />
+<img src="https://github.com/user-attachments/assets/d604de67-cc4c-4d3c-824b-2e08b0192eea" />
+</div>
+
+   - Label / Selector / Naming (1)
+<div align="center">
+<img src="https://github.com/user-attachments/assets/b51fc833-2d86-42fb-b072-d3170f190f0b" />
+</div>
+
+  - Label / Selector / Naming (2)
+<div align="center">
+<img src="https://github.com/user-attachments/assets/fad6e1bd-7c02-4ddd-bd9d-ff158b51aa94" />
+</div>
+
