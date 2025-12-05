@@ -96,7 +96,7 @@ spec:
         - name: files # volumeMounts name과 volumes의 name이 서로 매칭되어야 함
           persistentVolumeClaim: # 실제 PVC Object와 연결
             claimName: api-tester-1231-files
-        - name: secret-datasources # volumeMounts name과 volumes의 name이 서로 매칭되어야 함
+        - name: secret-datasource # volumeMounts name과 volumes의 name이 서로 매칭되어야 함
           secret:
             secretName: api-tester-1231-postgresql
 ```
