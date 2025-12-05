@@ -206,7 +206,7 @@ metadata: # Namespace 없음 (💡 Namespace와 PV은 Cluster-Level Object) / De
     managed-by: dashboard
 spec:
   capacity:
-    storage: 2G
+    storage: 2Gi
   volumeMode: Filesystem 
   accessModes:
     - ReadWriteMany
