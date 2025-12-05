@@ -47,12 +47,24 @@
    - 즉, Deployment(Selector) - ReplicaSet(Label / Selctor) - Pod(Label) 연결 구성
      + Service(Selector) - Pod(Label) / PVC(Selector) - PV(Label)로 연결
 
- 4. Kubernetes는 관계를 연결하는데 Object들 마다 다른 방법 제공
-    - Selector - Label
-    - Object 내에서 대상을 연결하는 속성 제공
+   - 정보성 라벨링과 기능성 라벨을 하는 labels과 정보성 라벨링 역할을 하는 labels로 분류
+     + 앞에 Prefix 부여 가능 : 도메인(Domain을 의미) [Optional]
+     + 의미 있는 정보를 추가하여 생성 가능 
+
+4. Kubernetes는 관계를 연결하는데 Object들 마다 다른 방법 제공
+   - Selector - Label
+   - Object 내에서 대상을 연결하는 속성 제공
       + 예) HPA에서 scaleTargetRef : Deployment 이름을 지정하는 속성
       + 예) Configmap과 Secret, PVC에서 Pod를 직접 연결하는 방법
 
+5. 실제 생성되는 Object
 <div align="center">
 <img src="https://github.com/user-attachments/assets/fad6e1bd-7c02-4ddd-bd9d-ff158b51aa94" />
 </div>
+
+   - Deployment는 ReplicaSet과 연결
+   - ReplicaSet, Service가 Pod와 연결
+   - PVC는 PV와 연결
+   - Node도 클러스터를 구성하면서 Kubernetes가 자동으로 새성한 Object가 존재하며, Label이 존재 : 이 Label은 Pod의 NodeSelecctor와 PV의 NodeAffinity와 연결
+
+   - Namespace는 여러 App이 들어가므로, 두 개의 labels 속성만 부여
