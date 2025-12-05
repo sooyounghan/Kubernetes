@@ -55,7 +55,9 @@
 -----
 ### API를 전송하며 Probe 동작 확인
 -----
-<img width="1581" height="571" alt="image" src="https://github.com/user-attachments/assets/7c98e5c4-06e0-4919-9ed4-8ca10211092e" />
+<div align="center">
+<img src="https://github.com/user-attachments/assets/7c98e5c4-06e0-4919-9ed4-8ca10211092e" />
+</div>
 
 : Master Node에서 실행
 ```bash
