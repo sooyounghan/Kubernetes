@@ -183,7 +183,7 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 2G # 저장 공간 설정
+      storage: 2Gi # 저장 공간 설정
   accessModes: # 저장 공간 모드 설정
     - ReadWriteMany # 읽기 / 쓰기
   selector:
