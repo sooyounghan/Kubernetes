@@ -51,3 +51,46 @@
        * 💡 User 초기화 과정에서 App은 초기화되었지만, 의도적으로 외부 트래픽을 받지 않게 할 때 사용
        * 결과 : 의도했던 초기화 작업들이 모두 완료됨을 알려주는 것
      + 단, 두 Probe는 App이 종료될 때까지 계속 HealthCheck해야 하므로, 가볍게 로직을 구성해야 함
+
+-----
+### API를 전송하며 Probe 동작 확인
+-----
+<img width="1581" height="571" alt="image" src="https://github.com/user-attachments/assets/7c98e5c4-06e0-4919-9ed4-8ca10211092e" />
+
+: Master Node에서 실행
+```bash
+﻿// 1번 API - 외부 API 실패
+curl http://192.168.56.30:31231/hello
+```
+
+```bash
+﻿// 2번 API 
+// 외부 API 실패
+curl http://192.168.56.30:31231/hello
+
+// 내부 API 성공
+kubectl exec -n anotherclass-123 -it api-tester-1231-7459cd7df-2hdhk -- curl localhost:8080/hello
+kubectl exec -n anotherclass-123 -it <my-pod-name> -- curl localhost:8080/hello
+```
+
+```bash
+﻿// 3번 API - 외부 API 성공
+curl http://192.168.56.30:31231/hello
+```
+
+```bash
+﻿// 4번 API
+// 트래픽 중단 - (App 내부 isAppReady를 False로 바꿈)
+curl http://192.168.56.30:31231/traffic-off
+
+// 외부 API 실패
+curl http://192.168.56.30:31231/hello
+
+// 트래픽 재개 - (App 내부 isAppReady를 True로 바꿈)
+kubectl exec -n anotherclass-123 -it api-tester-1231-7459cd7df-2hdhk -- curl localhost:8080/traffic-on
+```
+
+```bash
+﻿// 5번 API - 장애발생 (App 내부 isAppLive를 False로 바꿈)
+curl http://192.168.56.30:31231/server-error
+```
