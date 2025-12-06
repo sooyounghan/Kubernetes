@@ -60,7 +60,7 @@ http://192.168.56.30:31231/cpu-load?min=3&thread=5
 ```
    - 부하 확인
 ```bash
-// 실시간 업데이트는 명령어로 확인하는 게 빨라요
+// 실시간 업데이트는 명령어로 확인하는 게 빠름
 kubectl top -n anotherclass-123 pods
 kubectl get hpa -n anotherclass-123
 ```
