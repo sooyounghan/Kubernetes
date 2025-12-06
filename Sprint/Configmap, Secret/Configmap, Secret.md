@@ -105,8 +105,17 @@ http://192.168.56.30:31231/properties
 </div>
 
 ```bash
-﻿// 환경변수 수정 명령
+﻿// 환경변수 수정 명령 (직접 변경하는 것이지만, App을 실행시킬 때 이미 환경 변수가 주입되었음으로 변경 되지 않음
 export application_role=GET
 ```
 
-5. API 재확인 & Pod 재기동 후 확인
+5. API 재확인 & Pod 재기동 후 확인 : 💡 환경 변수는 Pod가 생성될 때 한 번만 주입되므로 Configmap 값만 수정한다고 변경되지 않음 (Pod 삭제 후 재생성하게 되면 반영)
+```bash
+bash-4.4# jps -v
+1 app.jar -Dspring.profiles.active=${spring_profiles_active} -Dapplication.role=${application_role} -Dpostgresql.filepath=${postgresql_filepath}
+69 Jps -Dapplication.home=/usr/java/openjdk-17 -Xms8m -Djdk.module.main=jdk.jcmd
+```
+
+6. Secret은 변경하면 바로 반영 : Secret을 Volume Mounting으로 연결해놓은 관계이기 때문임
+7. 정리
+   - 환경 변수로 주입하는지, Volume으로 연결하는지 따라 실시간 App의 값에 영향을 줄 수 있음
