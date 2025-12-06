@@ -28,13 +28,13 @@
    - 부하가 증가하면 CPU가 급격하게 증가하면서 Pod는 모두 죽음
    - CPU가 100%을 넘으므로 Kubernetes는 Scale-Out을 하는데, 기존 죽어 있는 Pod 2개는 새로 기동되어 있는 상태지만, 그 시간만큼 서비스 중단이 발생
    - Pod가 모두 기동되면서 서비스가 안정화되지만, 부하가 잦아지면 마찬가지로 Scale-In이 자주 일어나고, CPU가 올라감
-   - 즉, 자동화 스케일링 기능은 보조적인 역할로 사용해야 하며, 부하는 서비스마다 Peak 시간을 분석해 미리 자원을 증가 또는 대기열 아키테쳐를 구성하는 것이 좋ㅇ
+   - 즉, 자동화 스케일링 기능은 보조적인 역할로 사용해야 하며, 부하는 서비스마다 Peak 시간을 분석해 미리 자원을 증가 또는 대기열 아키텍쳐를 구성하는 것이 좋음
 
 6. behavior
    - 잦은 스케일링을 방지하기 위한 목적 (부하가 잠깐 올라갔다가 감소하는 현상 발생 가능(자바 애플리케이션의 경우 API 하나의 복잡한 로직이 있다면 CPU가 급격하게 증가하기 쉬운데, Scale-Out이 되면, 새 Pod가 만들어지고, 죽는 과정에서 CPU가 비효율적으로 사용됨)
    - scaleUp.stabilizationWindowSeconds(안정화 윈도우) 설정을 하면, 2분 정도 CPU가 60% 이상을 유지헤야 Scale-Out이 발생
      + Scale Up / Down : 한 서버의 자원을 높이거나 낮출 때 사용
-     + Sclae In / Out : 서버 개수를 늘리거나 감소시킬 때 사용
+     + Scale In / Out : 서버 개수를 늘리거나 감소시킬 때 사용
   - scaleDown.stabilizationWindowSeconds(안정화 윈도우) 설정 : Pod 수가 줄어들 때도 안정화 윈도우 기능 사용 가능 (여기서는 부하가 언제 올지 모르므로 10분을 기다리도록 설정)
   - policies
     + types: Pods / value : 1 / periodSeconds : 60 (삭제할 파드를 1분에 1개씩 제거)
@@ -58,7 +58,6 @@ http://192.168.56.30:31231/cpu-load?min=3&thread=5
 // 3분 동안 5개의 쓰레드로 80% 부하 발생 
 // default : min=2, thread=10
 ```
-​
    - 부하 확인
 ```bash
 // 실시간 업데이트는 명령어로 확인하는 게 빨라요
@@ -70,7 +69,6 @@ kubectl get hpa -n anotherclass-123
 // Grafana는 Prometheus를 거쳐 오기 때문에 좀 늦습니다
 Grafana > Home > Dashboards > [Default] Kubernetes / Compute Resources / Pod
 ```
-
   - 예상치 않은 상황 발생시 상태 원복 방법
 ```bash
 // 1. hpa 삭제
@@ -80,7 +78,7 @@ kubectl delete -n anotherclass-123 hpa api-tester-1231-default
 // 2. deployment replicas 2로 변경
 kubectl scale -n anotherclass-123 deployment api-tester-1231 --replicas=2
 ```
-```bash
+```yaml
 // 3. hpa 다시 생성
 kubectl apply -f - <<EOF
 apiVersion: autoscaling/v2
@@ -114,7 +112,6 @@ spec:
       stabilizationWindowSeconds: 120
 EOF
 ```
-
   - [behavior] 미사용으로 적용
 ```bash
 kubectl edit -n anotherclass-123 hpa api-tester-1231-default
@@ -130,21 +127,18 @@ spec:
     scaleUp:   # 삭제
       stabilizationWindowSeconds: 120   # 삭제
 ```
-
   - 부하 발생 API 
 ```bash
 http://192.168.56.30:31231/cpu-load 
 // 2분 동안 10개의 쓰레드로 80% 부하 발생
 // default : min=2, thread=10
 ```
-
   - 부하 확인 (kubectl)
 ```bash
 // 실시간 업데이트는 명령어로 확인하는 게 빠름
 kubectl top -n anotherclass-123 pods
 kubectl get hpa -n anotherclass-123
 ```
-
   - 부하 확인 (grafana)
 ```bash
 // 성능 (Prometheus를 거쳐 오기 때문에 좀 표시가 늦음)
