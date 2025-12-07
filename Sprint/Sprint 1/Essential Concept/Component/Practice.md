@@ -68,7 +68,7 @@ ls /etc/kubernetes/manifests
 ```bash
 iptables -t nat -L KUBE-NODEPORTS -n  | column -t
 ```
-  - 영상 촬영 이후 칼리코 버전이 업그레이드 되면서 iptables에 nodePort 정보를 표시해 주고 있지 않음
+  - Calico 버전이 업그레이드 되면서 iptables에 nodePort 정보를 표시해 주고 있지 않음
   - nodePort 정보는 kubectl get svc -A를 통해서만 확인 가능
     
 ```bash
