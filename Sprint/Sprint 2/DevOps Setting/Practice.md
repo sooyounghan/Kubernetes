@@ -180,14 +180,188 @@ https://github.com/signup
 <img src="https://github.com/user-attachments/assets/7f373448-34cf-4d3c-ba86-4bc98bdcb1cd" />
 </div>
 
-
    - image의 값을 자신의 DockerHub Username 으로 수정하기
 <div align="center">
 <img src="https://github.com/user-attachments/assets/f72c7c1b-b812-461d-a8d4-fd151ac611db" />
 </div>
 
-
    - 이따금씩 Sync fork 확인하기
 <div align="center">
 <img src="https://github.com/user-attachments/assets/8d7ff8dc-3e30-4eb5-9695-523b731f0c44" />
 </div>
+
+-----
+### 빌드 / 배포 파이프라인을 위한 스크립트 작성 및 실행
+-----
+<div align="center">
+<img src="https://github.com/user-attachments/assets/6cdf2e0f-d13d-4964-bb50-42cb5c6ca823" />
+</div>
+
+1. 소스 빌드(Build) 하기 : gradle
+   - 프로젝트 생성 : Jenkins 버전이 업데이트 되면서 UI 디자인이 조금씩 변함
+```bash
+item name : 2121-source-build
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/c0e66e9b-b689-4aa8-9833-7125676faa5b" />
+</div>
+
+  - Dashboard > 2121-source-build > Configuration > General > GitHub project 선택
+    + 소스 빌드(Build) 하기에서는 Deploy가 아닌 Source Repo를 쓰기 때문에 github를 그대로 사용
+```bash
+Project url : https://github.com/k8s-1pro/kubernetes-anotherclass-api-tester/
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/b8c907b6-4026-4002-a0c9-7b03b97c5141" />
+</div>
+
+  - 소스 코드 관리
+```bash
+Repository URL : https://github.com/k8s-1pro/kubernetes-anotherclass-api-tester.git
+Branch Specifier : */main
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/e5eb9770-86fe-4086-bca3-b4111d44f618" />
+</div>
+
+  - Build Steps > Invoke Gradle script
+```bash
+Gradle Version : gradle-7.6.1
+Tasks : clean build
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/78cde184-846c-4afd-a502-673d29d0a418" />
+<img src="https://github.com/user-attachments/assets/613bb5f5-e3ec-4056-ae0f-04cdf9d68417" />
+</div>
+
+  - [저장]
+  - Dashboard > 2121-source-build > 지금 빌드 및 로그확인
+<div align="center">
+<img src="https://github.com/user-attachments/assets/a52ad54d-a0c2-4d6d-aa4b-099bb6b3c38f" />
+</div>
+
+  - 생성된 Jar 파일 확인
+```bash
+[jenkins@cicd-server ~]$ ll /var/lib/jenkins/workspace/2121-source-build/build/libs
+-rw-r--r--. 1 jenkins jenkins 19025350 Oct 19 11:19 app-0.0.1-SNAPSHOT.jar
+-rw-r--r--. 1 jenkins jenkins    16646 Oct 19 11:19 app-0.0.1-SNAPSHOT-plain.jar
+```
+
+2. 컨테이너 빌드 하기 - docker
+<div align="center">
+<img src="https://github.com/user-attachments/assets/f81a5b7e-5a44-4bd1-9d88-373d6f31cad9" />
+</div>
+
+   - 프로젝트 생성
+```bash
+item name : 2121-container-build
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/1675eb57-f645-469f-b711-745803d59dd3" />
+</div>
+
+  - Dashboard > 2121-container-build > Configuration > General > GitHub project 선택
+    + k8s-1pro를 입력하지 마시고 자신의 GitHub Username 입력
+```bash
+Project url : https://github.com/<Github-Uesrname>/kubernetes-anotherclass-sprint2/
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/c09a44d1-3427-499c-8ce2-c76cfd69c4c4" />
+</div>
+
+   - 소스 코드 관리
+```bash
+Repository URL : https://github.com/<Github-Uesrname>/kubernetes-anotherclass-sprint2.git
+Branch Specifier : */main
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/e8646fa8-c0f4-4d73-8369-6514972c049d" />
+</div>
+
+   - 소스 코드 관리 > Additional Behavioures > Sparse Checkout paths
+```bash
+Path : 2121/build/docker
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/192532a5-f208-4577-bfbf-8509303dd52a" />
+</div>
+
+   - Build Steps > Execute shell
+```bash
+# jar 파일 복사
+cp /var/lib/jenkins/workspace/2121-source-build/build/libs/app-0.0.1-SNAPSHOT.jar ./2121/build/docker/app-0.0.1-SNAPSHOT.jar
+
+# 도커 빌드
+docker build -t <DockerHub_Username>/api-tester:v1.0.0 ./2121/build/docker
+docker push <DockerHub_Username>/api-tester:v1.0.0
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/3530c8a6-6c2c-484a-bf02-695517cb3383" />
+</div>
+
+  - [저장]
+  - Dashboard > 2121-container-build > 지금 빌드 및 로그 확인
+<div align="center">
+<img src="https://github.com/user-attachments/assets/7e20ac98-4b03-4d41-bcfa-2c21ccd7a200" />
+</div>
+
+  - Dockerfile 내용 확인
+```bash
+cat /var/lib/jenkins/workspace/2121-container-build/2121/build/docker/Dockerfile
+```
+```dockerfile
+FROM openjdk:17.0.2
+COPY ./app-0.0.1-SNAPSHOT.jar /usr/src/myapp/app.jar
+ENTRYPOINT ["java", "-Dspring.profiles.active=${spring_profiles_active}", "-Dapplication.role=${application_role}", "-Dpostgresql.filepath=${postgresql_filepath}", "-jar", "/usr/src/myapp/app.jar"]
+EXPOSE 8080
+WORKDIR /usr/src/myapp
+```
+
+3. 배포 하기 - kubectl
+<div align="center">
+<img src="https://github.com/user-attachments/assets/11f591f5-ba1e-42d1-a1fb-939846431cf4" />
+</div>
+
+  - 프로젝트 생성 (기존 프로젝트 복사)
+```bash
+item name : 2121-deploy
+Copy from : 2121-container-build
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/916e6c5a-84e9-4f56-9a74-8c358de5e006" />
+</div>
+
+  - 소스 코드 관리 > Additional Behavioures > Sparse Checkout paths
+```bash
+Path : 2121/deploy/k8s
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/31c74724-6b2b-41e9-9430-1cc5841e4e25" />
+</div>
+
+  - Build Steps > Execute shell
+```bash
+kubectl apply -f ./2121/deploy/k8s/namespace.yaml
+kubectl apply -f ./2121/deploy/k8s/pv.yaml
+kubectl apply -f ./2121/deploy/k8s/pvc.yaml
+kubectl apply -f ./2121/deploy/k8s/configmap.yaml
+kubectl apply -f ./2121/deploy/k8s/secret.yaml
+kubectl apply -f ./2121/deploy/k8s/service.yaml
+kubectl apply -f ./2121/deploy/k8s/hpa.yaml
+kubectl apply -f ./2121/deploy/k8s/deployment.yaml
+```
+<div align="center">
+<img src="https://github.com/user-attachments/assets/b8238ab0-b6d2-4859-99bf-77d3374acc17" />
+</div>
+
+  - [저장]
+  - Dashboard > 2121-deploy > 지금 빌드 및 로그 확인
+<div align="center">
+<img src="https://github.com/user-attachments/assets/f7633330-90fa-4bbd-9594-627a369adbd7" />
+</div>
+
+  - Dashboard 확인하기
+<div align="center">
+<img src="https://github.com/user-attachments/assets/966cbf4c-ff8a-4fce-ae1f-77f08f16e117" />
+</div>
+
