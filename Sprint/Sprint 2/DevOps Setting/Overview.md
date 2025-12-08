@@ -50,4 +50,4 @@
    - 인프라 환경에서 인증서를 CI / CD 환경으로 복사 : Jenkins에서 kubectl로 배포할 때 Kubernetes에 API를 전송 가능
    - GitHub 가입 및 설정 : Dockerfile과 yaml 파일 이미지 부분에 내용 수정
    - Jenkins에서 빌드 / 배포하기 위한 프로젝트 설정 및 실행 : Kubernetes에서 리소스를 생성, 그 리소스들 중에서 Pod를 만들 때 이미지는 본인의 DockerHub에 가져감
-   - 
+     
