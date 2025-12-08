@@ -33,7 +33,7 @@
      + Docker 설치 : Jenkins에서 컨테이너 빌드 및 DockerHub로 이미지를 올림
      + OpenJDK, Gradle : 소스 빌드
      + Git 설치 : 빌드에 쓸 소스 코드와 릴리즈 파일을 가져옴
-     + Jenkins : OpenJDK 11버전을 하나 더 설치 (Jenkins는 Version 11에서 동작하므로 Jenkins 설치용으로 필요 / 소스코드는 17버전으로 동작하)
+     + Jenkins : OpenJDK 11버전을 하나 더 설치 (Jenkins는 Version 11에서 동작하므로 Jenkins 설치용으로 필요 / 소스코드는 17버전으로 동작)
 
 4. Sprint 2 범위 실습 환경
 <div align="cetner">
