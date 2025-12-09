@@ -1,7 +1,7 @@
 -----
 ### Jenkins 파이프라인 기본 구성 및 배포 세분화
 -----
-1. New view 만들기
+1. New view 만들기 (Stage View Plug-in 사전 설치)
    - 이전 작업 [새 보기] 만들어서 정리해 놓기
 <div align="center">
 <img src="https://github.com/user-attachments/assets/0830d6a7-4906-449b-b0ad-0d6b881dab0a" />
@@ -34,7 +34,7 @@
 <img src="https://github.com/user-attachments/assets/744e4cc1-c035-428b-a827-e930f36f1e71" />
 </div>
 
-```jenkins
+```gradle
 pipeline {
     agent any
 
@@ -44,7 +44,7 @@ pipeline {
     }
 
     environment {
-        // 본인의 username으로 값을 넣어 주세요.
+        // 본인의 username으로 값.
         DOCKERHUB_USERNAME = ""
         GITHUB_USERNAME = ""
 
@@ -118,11 +118,13 @@ pipeline {
 <img src="https://github.com/user-attachments/assets/c4b1d8eb-7012-494a-b5ac-17ebcc71d55d" />
 </div>
 
-  - Agent
+  - Agent (파이프라인 안에서 컨테이너 실행 / Docker 빌드 / YAML 파일도 배포 가능하며, Agent 형태로 제공)
     + agent any : 사용 가능한 에이전트에서 파이프라인 Stage를 실행, Master나 Salve 아무곳에서나 Stage가 실행됨
     + agent label(node) : 지정된 레이블(노드)에서 Stage가 실행
     + agent docker : Docker 빌드를 제공해주는 Agent 사용
     + agent dockerfile : Dockerfile 을 직접 쓸 수 있는 Agent 사용
+
+  - node('slave') ... 로 시작하는 부분 : Jenkins를 Master-Slave 구조로 설치하게 됐을 때, Slave에서 스크립트를 돌리겠다는 의미로, 한 번에 여러 스크립트를 가동해야 할 때, Load를 분산시키려고 하는 것
 
   - Jenkins Docs : ```https://www.jenkins.io/doc/book/pipeline/syntax/```
 
