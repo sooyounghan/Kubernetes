@@ -12,7 +12,7 @@ pipeline {
     }
 
     environment {
-        // 전역값을 넣어 두시면 위 parameters 입력이 필요 없어요. (전체 Jenkinfile에서 해당 내용을 모두 수정해 놓으면 좋습니다.)
+        // 전역값을 넣어 두시면 위 parameters 입력이 필요 없음 (전체 Jenkinfile에서 해당 내용을 모두 수정해 놓으면 좋음음)
         // GITHUB_USERNAME = ""
 
         // 아래 부분 수정(x)
