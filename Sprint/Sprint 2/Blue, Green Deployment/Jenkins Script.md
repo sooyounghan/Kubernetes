@@ -133,7 +133,7 @@ stage('전환여부 확인') {
             returnValue = input message: 'Green 전환?', ok: "Yes", parameters: [booleanParam(defaultValue: true, name: 'IS_SWITCHED')]
             if (returnValue) {
                 // kubectl path 명령 : Namespace에 Service의 spec에 저장된 selector로 지정된 blue-green 넘버를 2로 바꾸라는 내용
-                // patch는 -p 옵션을 부여해 특정 속성만 변경할 떄 사 
+                // patch는 -p 옵션을 부여해 특정 속성만 변경할 떄 사용
                 sh "kubectl patch -n anotherclass-221 svc api-tester -p '{\"spec\": {\"selector\": {\"blue-green-no\": \"2\"}}}'"
             }
         }
