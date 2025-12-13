@@ -6,7 +6,7 @@
 </div>
 
 1. Argo Rollouts 설치
-   - Jenkins > Dashboard > add-on > deploy-argo > 파라미터와 함께 빌드
+   - Jenkins > Dashboard → add-on → deploy-argo → 파라미터와 함께 빌드
 ```
 DEPLOY_TYPE : helm_upgrade
 TARGET_ARGO : argocd-rollouts
@@ -51,9 +51,9 @@ spec:
   project: default
 ```
 
-3. 배포하기 - [SYNC] 클릭 > [SYNCHRONIZE] 클릭
+3. 배포하기 - [SYNC] 클릭 → [SYNCHRONIZE] 클릭
 4. 배포 확인
-5. 트래픽 보내기  (Active Service (32233) - 1.0.0 App 연결, Preview Service (32243) - 1.0.0 App 연결)
+5. 트래픽 보내기 (Active Service (32233) - 1.0.0 App 연결, Preview Service (32243) - 1.0.0 App 연결)
 ```bash
 # Active Service
 [root@k8s-master ~]# while true; do curl http://192.168.56.30:32233/version; sleep 2; echo '';  done;
@@ -92,8 +92,9 @@ spec:
       targetPort: http
       nodePort: 32233
   type: NodePort
-▶ rollout.yaml 설정 내용
-
+```
+   - rollout.yaml 설정 내용
+```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
@@ -124,7 +125,7 @@ spec:
     + autoPromotionEnabled : 새 RepliaSet이 활성화 되면 바로 트래픽을 전환 = 자동 업그레이드 (default : true)
     + ```https://argo-rollouts.readthedocs.io/en/stable/features/bluegreen/```
    
-   - HPA 생성시 예제
+  - HPA 생성시 예제
 ```yaml
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -139,17 +140,17 @@ spec:
     name: api-tester-2233
   targetCPUUtilizationPercentage: 80
 ```
-​  
-  - Git에서 image의 tag 변경 (1.0.0 -> 2.0.0로 변경)
+  - Git에서 image의 tag 변경 (1.0.0 → 2.0.0로 변경)
 ```yaml
-    spec:
-      containers:
-        - envFrom:
-            - configMapRef:
-                name: api-tester-2233-properties
-          image: '1pro/api-tester:1.0.0'  // -> '1pro/api-tester:2.0.0' 로 변경
+ spec:
+   containers:
+     - envFrom:
+         - configMapRef:
+             name: api-tester-2233-properties
+       image: '1pro/api-tester:1.0.0'  // -> '1pro/api-tester:2.0.0' 로 변경
 ```
-​  - ArgoCD에서 Applications > api-tester-2233 > [SYNC] 클릭
+
+  - Argo CD에서 Applications → api-tester-2233 → [SYNC] 클릭
   - 트래픽 확인 (Active Service (32233) - 1.0.0 App 연결, Preview Service (32243) - 2.0.0 App 연결)
 ```bash
 # Active Service
@@ -161,7 +162,7 @@ spec:
 [App Version] : Api Tester v2.0.0
 ```
   - Promote 진행
-    + ArgoCD > Applications > api-tester-2233 > Rollout > [...]클릭 > promote-Full
+    + ArgoCD → Applications → api-tester-2233 → Rollout > [...]클릭 > promote-Full
 <div align="center">
 <img src="https://github.com/user-attachments/assets/5bc025cf-f093-4ebe-809d-04e703702e53" />
 </div>
@@ -208,8 +209,8 @@ kubectl-argo-rollouts: v1.6.4+a312af9
 ```bash
 // Rollout 조회 하기
 kubectl argo rollouts get rollout api-tester-2233 -n anotherclass-223 -w
-https://argo-rollouts.readthedocs.io/en/stable/generated/kubectl-argo-rollouts/kubectl-argo-rollouts/
 ```
+   - 그 외 명령어 : ```https://argo-rollouts.readthedocs.io/en/stable/generated/kubectl-argo-rollouts/kubectl-argo-rollouts/```
 
 7. 리소스 정리하기
 <div align="center">
