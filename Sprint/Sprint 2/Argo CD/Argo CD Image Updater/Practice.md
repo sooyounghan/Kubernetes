@@ -16,7 +16,7 @@ config:
 
 3. Image Updater 설치 시 Jenkinsfile에 적용된 Docker연결 내용 : ```https://github.com/k8s-1pro/install/blob/main/ground/cicd-server/argo/Jenkinsfile```
 ```jenkins
-   HELM_DEPLOY_COMMAND =  "helm upgrade ${params.TARGET_ARGO} ./${INSTALL_PATH}/helm/${params.TARGET_ARGO} " +
+HELM_DEPLOY_COMMAND =  "helm upgrade ${params.TARGET_ARGO} ./${INSTALL_PATH}/helm/${params.TARGET_ARGO} " +
 " -f ./${INSTALL_PATH}/helm/${params.TARGET_ARGO}/values-dev.yaml" + " -n argo --install --kubeconfig " + '${KUBECONFIG}' +
 " --wait --timeout=10m "  
 
@@ -54,7 +54,7 @@ time="2024-01-12T01:17:15Z" level=info msg="Processing results: applications=1 i
 ```
 
 6. 자동 배포 설정 방법
-   - pplication > api-tester-2232 > [DETAILS] 클릭
+   - Application > api-tester-2232 > [DETAILS] 클릭
 <div align="center">
 <img src="https://github.com/user-attachments/assets/80617330-2ae0-4090-a871-a37f908b3d7d" />
 </div>
