@@ -7,7 +7,7 @@
 
 1. 사용 이유
    - 개발자 PC에서 개발자는 자신의 App 코드를 App 소스 코드 전용 레포지토리에 Commit
-   - DevOps 엔지니어는 이 App에 대해 Kubernetes에 배포할 YAML 파일들을 릴리즈 전용 레파지토리에 COMMIT
+   - DevOps 엔지니어는 이 App에 대해 Kubernetes에 배포할 YAML 파일들을 릴리즈 전용 레파지토리에 Commit
    - 이런 상태에서 배포해야 되는 상황
      + Resource 스펙을 변경해야 될 때 : Deployment에서 배포 전략을 바꾼다던지, 수동으로 Scale-Up해야 할 때, DevOps 엔지니어는 YAML 파일을 수정해서 Git에 커밋하고 Deployment Job을 실행하면 Kubernetes에 반영
      + App 버전이 업그레이드 되서 컨테이너 이미지를 변경해줘야 할 때 : 개발자가 소스 빌드 Job을 실행하면, 최신 소스를 가지고 Jar 파일이 만들어지고 컨테이너를 빌드를 하며 DockerHub에 이미지를 업로드
