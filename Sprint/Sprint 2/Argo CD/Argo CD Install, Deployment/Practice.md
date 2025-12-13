@@ -91,6 +91,10 @@ Definition > Script Path : ground/cicd-server/argo/Jenkinsfile
    - Argo Rollouts 배포
 
 3. ArgoCD 접속
+```bash
+https://192.168.56.30:30002/login
+```
+
 <div align="center">
 <img src="https://github.com/user-attachments/assets/1d9cf9dc-9fa7-43d4-857d-e4b0b2cca735" />
 </div>
