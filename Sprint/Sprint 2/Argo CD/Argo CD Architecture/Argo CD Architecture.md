@@ -18,7 +18,7 @@
    - Kubernetes 설치 : 30000번 Port를 통해 UI에 접근하거나 kubectl로 CLI를 전송 - kube-apiserver를 통해 API를 받아 관련된 컴포넌트들에게 트래픽을 전달해주는 구조
    - ArgoCD를 설치하면 수 많은 컴포넌트들이 설치
      + Server : API 서버와 대시보드 역할을 동시에 하므로, NodePort로 ArgoCD UI에 접속할 수 있고, kubectl처럼 argocd라는 툴을 설치해 CLI을 전송 가능
-     + GitHub (App에 대해 배포할 YAML 파일들이 존재)가 존재하며, Repo Servr는 Git에 연결해서 YAML 파일들을 가져오며, 이를 통해 Kubernetes에 배포할 Manifest 파일을 만들어 놓는 역할을 함
+     + GitHub (App에 대해 배포할 YAML 파일들이 존재)가 존재하며, Repo Server는 Git에 연결해서 YAML 파일들을 가져오며, 이를 통해 Kubernetes에 배포할 Manifest 파일을 만들어 놓는 역할을 함
      + Application Controller는 Kubernetes의 리소스를 모니터링하면서 Git에 받은 내용과 다른게 있는지 비교하며, 내용이 다르면 Git에 있는 내용으로 배포 진행
      + Kuber API : Kubernetes로 리소스 생성 명령을 전송하는 역할
      + Notification : ArgoCD에서 발생하는 이벤트를 외부로 Trigger해주는 역할
